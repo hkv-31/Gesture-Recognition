@@ -13,7 +13,7 @@ A real-time gesture recognition system that detects hand gestures using computer
 - Built with MediaPipe and OpenCV
 - Cross-platform compatibility
 
-### Prerequisites
+## Prerequisites
 - Python 3.11 (required for MediaPipe compatibility)
 - Webcam
 - Windows/Mac/Linux
@@ -42,11 +42,4 @@ The long-term vision for this project is to develop a comprehensive Indian Sign 
 
 ## License
 This project is open source and available under the MIT License.
-
-Contact
-For questions and suggestions:
-
-GitHub Issues: Project Issues
-
-Email: your-email@example.com
 
