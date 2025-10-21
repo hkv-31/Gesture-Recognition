@@ -18,7 +18,7 @@ A real-time gesture recognition system that detects hand gestures using computer
 - Webcam
 - Windows/Mac/Linux
 
-## Interaction:
+## Interaction
 Show your hand to the camera to detect gestures
 Hold gestures steady for better recognition
 Ensure good lighting and clear background
