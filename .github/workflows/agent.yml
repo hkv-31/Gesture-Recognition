@@ -12,6 +12,10 @@ jobs:
       contains(github.event.comment.body, '@gitagent explain') ||
       contains(github.event.comment.body, '@gitagent test')
     runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+      contents: read
 
     steps:
       - name: Checkout agent
@@ -48,4 +52,5 @@ jobs:
           const payload = JSON.parse(fs.readFileSync('/tmp/payload.json', 'utf8'));
           const { run } = await import('./index.js');
           await run(payload);
+          process.exit(0);
           EOF
