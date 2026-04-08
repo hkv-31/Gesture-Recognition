@@ -14,8 +14,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout this repo
+      - name: Checkout agent
         uses: actions/checkout@v4
+        with:
+          repository: hkv-31/Code-Explainer-Git-Agent
+          path: agent
+
+      - name: Checkout target repo
+        uses: actions/checkout@v4
+        with:
+          path: repo
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
