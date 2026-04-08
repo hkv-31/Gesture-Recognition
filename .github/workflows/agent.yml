@@ -23,14 +23,21 @@ jobs:
           node-version: "20"
 
       - name: Install agent dependencies
-        run: |
-          npm install @octokit/rest
+        run: cd agent && npm install
+
+      - name: Write payload to file
+        env:
+          PAYLOAD: ${{ toJson(github.event) }}
+        run: echo "$PAYLOAD" > /tmp/payload.json
 
       - name: Run agent
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
         run: |
-          node -e "
-          import('./index.js').then(m => m.run(${{ toJson(github.event) }})).catch(e => { console.error(e); process.exit(1); })
-          "
+          cd agent && node --input-type=module << 'EOF'
+          import fs from 'fs';
+          const payload = JSON.parse(fs.readFileSync('/tmp/payload.json', 'utf8'));
+          const { run } = await import('./index.js');
+          await run(payload);
+          EOF
