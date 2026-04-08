@@ -135,6 +135,9 @@ class GestureRecognizer:
         cv2.destroyAllWindows()
         print("Gesture recognition stopped.")
 
+def recognize_gesture(self, landmarks):
+    """Classifies hand gesture from MediaPipe landmark positions."""
+
 def main():
     try:
         recognizer = GestureRecognizer()
